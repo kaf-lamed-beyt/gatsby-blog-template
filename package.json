@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-webiny-blog",
+  "name": "gatsby-blog-template",
   "version": "1.0.0",
   "private": true,
-  "description": "gatsby-webiny-blog",
+  "description": "A blog template built with Gatsby and Webiny CMS",
   "author": "kaf-lamed-beyt",
   "keywords": [
     "gatsby"
