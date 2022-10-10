@@ -1,21 +1,58 @@
 module.exports = {
   siteMetadata: {
     title: `gatsby-webiny-blog`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: ["gatsby-plugin-image", "gatsby-plugin-mdx", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
+  plugins: [
+    `gatsby-plugin-image`,
+    `gatsby-plugin-mdx`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images/`,
+      },
     },
-    __key: "images"
-  }, {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "pages",
-      "path": "./src/pages/"
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
+      },
     },
-    __key: "pages"
-  }]
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        paths: `${__dirname}/src/posts/`,
+      },
+    },
+    // mdx config
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [".mdx", ".md"],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-google-fonts",
+      options: {
+        fonts: [
+          `roboto-mono`, // for the codeblocks on our blog
+          `muli\:400,400i,700,700i`,
+        ],
+        display: "swap",
+      },
+    },
+  ],
 };
