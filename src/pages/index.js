@@ -2,7 +2,8 @@ import * as React from "react";
 import Header from "../components/Header";
 import { graphql } from "gatsby";
 import { Seo } from "../components/Seo";
-import { BlogPosts } from "./style/home.styled";
+import { IndexWrapper, BlogPosts } from "./style/home.styled";
+import Post, { FeaturedPost } from "../components/Post";
 
 const IndexPage = ({ data }) => {
   // const {
@@ -11,13 +12,11 @@ const IndexPage = ({ data }) => {
 
   // console.log(webiny);
 
-  // const post = data.webiny.listPosts.data;
+  const posts = data.webiny.listPosts.data;
 
-  const {
-    webiny: {
-      listPosts: { data },
-    },
-  } = data;
+  const latestPost = posts[0];
+
+  console.log(latestPost);
 
   // const {
   //   webiny: {
@@ -28,12 +27,15 @@ const IndexPage = ({ data }) => {
   return (
     <React.Fragment>
       <Seo title="Holla Seo" />
-      <Header />
-      <BlogPosts>
-        {post.map((item) => {
-          return <p key={item.id}>{item.title}</p>;
-        })}
-      </BlogPosts>
+      <IndexWrapper>
+        <Header />
+        <BlogPosts>
+          <FeaturedPost data={latestPost} />
+          {posts?.map((items) => {
+            return <Post data={items} />;
+          })}
+        </BlogPosts>
+      </IndexWrapper>
     </React.Fragment>
   );
 };
@@ -45,10 +47,15 @@ export const posts = graphql`
     webiny {
       listPosts(sort: createdOn_DESC) {
         data {
+          id
           slug
           title
+          excerpt
+          createdOn
           featuredImage
-          id
+          author {
+            name
+          }
         }
       }
     }
