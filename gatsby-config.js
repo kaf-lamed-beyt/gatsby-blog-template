@@ -19,21 +19,6 @@ module.exports = {
         path: `${__dirname}/src/images/`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `pages`,
-    //     path: `${__dirname}/src/pages/`,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `posts`,
-    //     paths: `${__dirname}/src/posts/`,
-    //   },
-    // },
-    // mdx config
     {
       resolve: `gatsby-plugin-mdx`,
       options: {

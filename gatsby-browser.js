@@ -1,6 +1,7 @@
 import React from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { theme } from "./src/themes/theme";
+import "./src/styles/globals.scss";
 
 const {
   fonts: { main, code },
@@ -12,7 +13,6 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         margin: 0;
     }
-
     html, body {
         font-family: ${main};
         height: 100%;
