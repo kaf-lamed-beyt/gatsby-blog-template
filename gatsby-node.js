@@ -4,7 +4,7 @@ const { createFilePath } = require("gatsby-source-filesystem");
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  const blogPost = path.resolve(".src/templates/blog-post.js");
+  const blogPost = path.resolve("src/templates/blog-post.js");
 
   const result = await graphql(`
     query Posts {
@@ -14,13 +14,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             title
             slug
-            description
+            excerpt
             createdOn
             featuredImage
             author {
               name
               picture
             }
+            body
           }
         }
       }
@@ -37,6 +38,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = result.data.webiny.listPosts.data;
 
+  console.log(posts);
+
   // Create blog posts pages
   if (posts.length > 0) {
     posts.forEach((post, index) => {
@@ -45,10 +48,41 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         component: blogPost,
         context: {
           id: post.id,
-          createdOn: post.createdOn,
+          body: post.body,
           slug: post.slug,
+          title: post.title,
+          createdOn: post.createdOn,
         },
       });
     });
   }
+
+  // if (posts.length > 0) {
+  //   posts.forEach((post, index) => {
+  //     createPage({
+  //       path: `${post.slug}`,
+  //       component: blogPost,
+  //       context: {
+  //         body: post.body,
+  //         title: post.title,
+  //         id: post.id,
+  //         createdOn: post.createdOn,
+  //         slug: post.slug,
+  //       },
+  //     });
+  //   });
+  // }
 };
+
+// exports.onCreateNode = ({ node, getNode, actions }) => {
+//   const { createNodeField } = actions;
+
+//   if (node.internal.type === "webiny") {
+//     const slug = createFilePath({ node, getNode, basePath: "pages" });
+//     createNodeField({
+//       node,
+//       name: slug,
+//       value: slug,
+//     });
+//   }
+// };

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BlogPosts = styled.section`
+export const BlogPostSection = styled.section`
   margin-top: 80px;
   padding: var(--desktop-pad);
   display: flex;

@@ -46,9 +46,12 @@ export default function Post({
   },
 }) {
   return (
-    <Link to={slug} style={{ textDecoration: "none", color: "#000" }}>
+    <Link
+      to={`/blog/${slug}`}
+      style={{ textDecoration: "none", color: "#000" }}
+    >
       <Card>
-        <img src={featuredImage} alt={`${title}'s cover image`} />
+        <img src={featuredImage} alt={`${title}'s cover`} />
         <div className="article-info">
           <p className="article-title">{title}</p>
           <div className="footnote">
@@ -107,7 +110,7 @@ export const FeaturedPost = ({
   return (
     <Link to={slug} style={{ textDecoration: "none", color: "#fff" }}>
       <FeaturedCard>
-        <img src={featuredImage} alt={`${title}'s cover image`} />
+        <img src={featuredImage} alt={`${title}'s cover`} />
         <div className="article-info">
           <p className="article-title">{title}</p>
           <p className="date">{dayjs(createdOn).format("MMMM, D, YYYY")}</p>

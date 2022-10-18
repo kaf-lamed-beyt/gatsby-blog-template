@@ -2,7 +2,7 @@ import * as React from "react";
 import Header from "../components/Header";
 import { graphql } from "gatsby";
 import { Seo } from "../components/Seo";
-import { IndexWrapper, BlogPosts } from "./style/home.styled";
+import { BlogPostSection } from "./style/home.styled";
 import Post, { FeaturedPost } from "../components/Post";
 
 const IndexPage = ({ data }) => {
@@ -12,30 +12,21 @@ const IndexPage = ({ data }) => {
 
   // console.log(webiny);
 
-  const posts = data.webiny.listPosts.data;
-
+  let posts = data.webiny.listPosts.data;
   const latestPost = posts[0];
-
-  console.log(latestPost);
-
-  // const {
-  //   webiny: {
-  //     listPosts: { data },
-  //   },
-  // } = posts;
 
   return (
     <React.Fragment>
       <Seo title="Holla Seo" />
-      <IndexWrapper>
+      <main style={{ border: "1px solid #fff", height: "100vh" }}>
         <Header />
-        <BlogPosts>
+        <BlogPostSection>
           <FeaturedPost data={latestPost} />
-          {posts?.map((items) => {
-            return <Post data={items} />;
+          {posts.slice(1)?.map((items) => {
+            return <Post data={items} key={items.id} />;
           })}
-        </BlogPosts>
-      </IndexWrapper>
+        </BlogPostSection>
+      </main>
     </React.Fragment>
   );
 };
