@@ -2,7 +2,7 @@ import * as React from "react";
 import Header from "../components/Header";
 import { graphql } from "gatsby";
 import { Seo } from "../components/Seo";
-import { BlogPostSection } from "./style/home.styled";
+import { BlogPostSection } from "../styles/home.styled";
 import Post, { FeaturedPost } from "../components/Post";
 
 const IndexPage = ({ data }) => {

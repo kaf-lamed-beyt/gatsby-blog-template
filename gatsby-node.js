@@ -38,8 +38,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = result.data.webiny.listPosts.data;
 
-  console.log(posts);
-
   // Create blog posts pages
   if (posts.length > 0) {
     posts.forEach((post, index) => {
