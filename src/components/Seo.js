@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Seo = ({ title, description, twitterCard }) => {
+export const Seo = ({ pageTitle, description, twitterCard }) => {
   return (
     <>
-      <title>{title}</title>
+      <title>{pageTitle}</title>
     </>
   );
 };

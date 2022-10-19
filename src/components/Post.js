@@ -46,10 +46,7 @@ export default function Post({
   },
 }) {
   return (
-    <Link
-      to={`/blog/${slug}`}
-      style={{ textDecoration: "none", color: "#000" }}
-    >
+    <Link to={`${slug}`} style={{ textDecoration: "none", color: "#000" }}>
       <Card>
         <img src={featuredImage} alt={`${title}'s cover`} />
         <div className="article-info">
@@ -73,13 +70,19 @@ const FeaturedCard = styled.div`
   justify-content: space-between;
   margin: 30px 0 50px 0;
 
-  img {
-    border-top-left-radius: inherit;
-    border-bottom-left-radius: inherit;
+  .img-container {
+    width: 60%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
   }
 
   .article-info {
-    width: 440px;
+    width: 40%;
     padding: 15px 9px 0px 9px;
 
     .article-title {
@@ -94,6 +97,26 @@ const FeaturedCard = styled.div`
     .article-excerpt {
       padding: 20px 0;
     }
+  }
+
+  @media only screen and (min-width: 0px) and (max-width: 576px) {
+    height: 80%;
+    flex-wrap: wrap;
+    border-radius: 10px;
+
+    .img-container {
+      display: none;
+    }
+
+    .article-info {
+      padding: 10px 10px;
+      width: 100%;
+    }
+  }
+
+  @media only screen and (min-width: 577px) and (max-width: 768px) {
+    border: 1px solid red;
+    flex-flow: column;
   }
 `;
 
@@ -110,7 +133,9 @@ export const FeaturedPost = ({
   return (
     <Link to={slug} style={{ textDecoration: "none", color: "#fff" }}>
       <FeaturedCard>
-        <img src={featuredImage} alt={`${title}'s cover`} />
+        <div className="img-container">
+          <img src={featuredImage} alt={`${title}'s cover`} />
+        </div>
         <div className="article-info">
           <p className="article-title">{title}</p>
           <p className="date">{dayjs(createdOn).format("MMMM, D, YYYY")}</p>
