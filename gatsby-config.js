@@ -4,14 +4,15 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `gatsby-webiny-blog`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `Webiny blog`,
+    siteUrl: `https://gatsby-webiny-blog`,
   },
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-mdx`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
