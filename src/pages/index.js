@@ -6,12 +6,6 @@ import { BlogPostSection } from "../styles/home.styled";
 import Post, { FeaturedPost } from "../components/Post";
 
 const IndexPage = ({ data }) => {
-  // const {
-  //   data: { webiny },
-  // } = data;
-
-  // console.log(webiny);
-
   let posts = data.webiny.listPosts.data;
   const latestPost = posts[0];
 

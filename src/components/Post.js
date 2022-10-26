@@ -122,6 +122,7 @@ const FeaturedCard = styled.div`
 
 export const FeaturedPost = ({
   data: {
+    id,
     slug,
     title,
     excerpt,
@@ -131,7 +132,7 @@ export const FeaturedPost = ({
   },
 }) => {
   return (
-    <Link to={slug} style={{ textDecoration: "none", color: "#fff" }}>
+    <Link to={`${slug}${id}`} style={{ textDecoration: "none", color: "#fff" }}>
       <FeaturedCard>
         <div className="img-container">
           <img src={featuredImage} alt={`${title}'s cover`} />

@@ -1,5 +1,4 @@
 const path = require("path");
-const { createFilePath } = require("gatsby-source-filesystem");
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
@@ -47,27 +46,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         context: {
           id: post.id,
           body: post.body,
-          slug: post.slug,
+          slug: `${post.slug}${post.id}`,
           title: post.title,
           createdOn: post.createdOn,
         },
       });
     });
   }
-
-  // if (posts.length > 0) {
-  //   posts.forEach((post, index) => {
-  //     createPage({
-  //       path: `${post.slug}`,
-  //       component: blogPost,
-  //       context: {
-  //         body: post.body,
-  //         title: post.title,
-  //         id: post.id,
-  //         createdOn: post.createdOn,
-  //         slug: post.slug,
-  //       },
-  //     });
-  //   });
-  // }
 };
